@@ -7,7 +7,7 @@ async function loadMyBooks() {
     booksDiv.innerHTML = "";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/my-books/" + memberId);
+        let response = await fetch(`${API_BASE_URL}/my-books/` + memberId);
         if (!response.ok) {
             throw new Error("Failed to load my books");
         }
@@ -51,7 +51,7 @@ async function loadMyBooks() {
 
 async function returnBook(bookId) {
     try {
-        let response = await fetch("http://127.0.0.1:8000/return-book", {
+        let response = await fetch(`${API_BASE_URL}/return-book`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

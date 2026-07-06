@@ -8,7 +8,7 @@ async function register() {
         return;
     }
 
-    let response = await fetch("http://127.0.0.1:8000/register", {
+    let response = await fetch(`${API_BASE_URL}/register`, {
 
         method: "POST",
 

@@ -7,7 +7,7 @@ async function loadBooks() {
     booksDiv.innerHTML = "";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/books");
+        let response = await fetch(`${API_BASE_URL}/books`);
         if (!response.ok) {
             throw new Error("Failed to fetch books");
         }
@@ -59,7 +59,7 @@ async function borrowBook(bookId) {
     let memberId = localStorage.getItem("member_id");
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/borrow-book", {
+        let response = await fetch(`${API_BASE_URL}/borrow-book`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -100,7 +100,7 @@ async function searchBooks() {
     recSection.style.display = "none";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/search/" + text);
+        let response = await fetch(`${API_BASE_URL}/search/` + text);
         if (!response.ok) {
             throw new Error("Failed to search books");
         }
@@ -156,7 +156,7 @@ async function loadRecommendations(genre, bookId) {
     recsDiv.innerHTML = "";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/recommend/" + genre + "/" + bookId);
+        let response = await fetch(`${API_BASE_URL}/recommend/` + genre + "/" + bookId);
         if (!response.ok) {
             throw new Error("Failed to load recommendations");
         }

@@ -12,7 +12,7 @@ async function loadStats() {
     }
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/dashboard-stats");
+        let response = await fetch(`${API_BASE_URL}/dashboard-stats`);
         if (!response.ok) {
             throw new Error("Failed to load statistics");
         }

@@ -13,7 +13,7 @@ async function loadMembers() {
     if (existingMsg) existingMsg.remove();
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/members");
+        let response = await fetch(`${API_BASE_URL}/members`);
         if (!response.ok) {
             throw new Error("Failed to fetch members");
         }

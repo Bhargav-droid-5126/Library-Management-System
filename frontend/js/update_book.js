@@ -12,7 +12,7 @@ document.getElementById("genre").value =
 async function updateBook() {
 
     let response = await fetch(
-        "http://127.0.0.1:8000/update-book",
+        `${API_BASE_URL}/update-book`,
         {
 
             method: "PUT",

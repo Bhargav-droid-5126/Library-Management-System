@@ -6,7 +6,7 @@ async function loadBooks() {
     container.innerHTML = "";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/books");
+        let response = await fetch(`${API_BASE_URL}/books`);
         if (!response.ok) {
             throw new Error("Failed to load books");
         }
@@ -81,7 +81,7 @@ async function deleteBook(bookId) {
     }
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/delete-book", {
+        let response = await fetch(`${API_BASE_URL}/delete-book`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

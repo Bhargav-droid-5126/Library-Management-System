@@ -3,7 +3,7 @@ async function loginUser() {
     let mem_id = document.getElementById("mem_id").value;
     let password = document.getElementById("password").value;
 
-    let response = await fetch("http://127.0.0.1:8000/user-login", {
+    let response = await fetch(`${API_BASE_URL}/user-login`, {
 
         method: "POST",
 

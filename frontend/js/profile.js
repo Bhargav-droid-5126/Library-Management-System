@@ -13,7 +13,7 @@ async function loadProfile() {
     }
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/profile/" + memberId);
+        let response = await fetch(`${API_BASE_URL}/profile/` + memberId);
         if (!response.ok) {
             throw new Error("Failed to load profile");
         }
@@ -47,7 +47,7 @@ async function updateProfile() {
     contentDiv.style.display = "none";
 
     try {
-        let response = await fetch("http://127.0.0.1:8000/update-profile", {
+        let response = await fetch(`${API_BASE_URL}/update-profile`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
