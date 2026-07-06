@@ -4,7 +4,7 @@ A modern, responsive, and full-stack **Library Management System** built with a 
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Responsive Dashboards:** Dedicated panels for users and admins that adapt dynamically across mobile, tablet, and desktop layouts.
 - **Dynamic Theme Switcher:** Smooth dark/light mode transition toggler that persists selection in `localStorage` with zero-flash loading.
@@ -15,7 +15,7 @@ A modern, responsive, and full-stack **Library Management System** built with a 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend:** Vanilla HTML5, CSS3, ES6 JavaScript, FontAwesome
 - **Backend:** FastAPI (Python), Uvicorn ASGI Server
@@ -23,7 +23,7 @@ A modern, responsive, and full-stack **Library Management System** built with a 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 LibraryManagementSystem/
@@ -63,7 +63,7 @@ LibraryManagementSystem/
 
 ---
 
-## 🔧 Installation & Setup
+## Installation & Setup
 
 ### 1. Database Configuration
 1. Install and start **PostgreSQL**.
@@ -101,7 +101,7 @@ LibraryManagementSystem/
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Add JSON Web Token (JWT) stateless user authorization and session trackers.
 - Implement containerization using Docker for simple database and web servers orchestration.
@@ -109,7 +109,7 @@ LibraryManagementSystem/
 
 ---
 
-## 👤 Author
+## Author
 
 - **Bhargav Ch S** (imchsbhargav@gmail.com)
 - Portfolio/Blog: [bhargavchs.vercel.app](http://bhargavchs.vercel.app)
