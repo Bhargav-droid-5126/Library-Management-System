@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+
+</head>
+
+<body class="dashboard-page">
+
+    <div class="container">
+
+        <h1><i class="fa-solid fa-book"></i> Admin Dashboard</h1>
+
+        <p style="color:#6b7280;font-size:18px;margin-bottom:35px;">
+            Welcome Admin! Manage your library from here.
+        </p>
+
+        <h2><i class="fa-solid fa-chart-line"></i> Library Statistics</h2>
+
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <p>Loading statistics...</p>
+
+        </div>
+
+        <div class="stats" id="statsContainer">
+
+            <div class="stat-card">
+
+                <h3>Total Books</h3>
+
+                <h1 id="totalBooks">0</h1>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>Total Members</h3>
+
+                <h1 id="totalMembers">0</h1>
+
+            </div>
+
+            <div class="stat-card">
+
+                <h3>Borrowed Books</h3>
+
+                <h1 id="borrowedBooks">0</h1>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard">
+
+            <div class="card" onclick="window.location.href='add_book.html'">
+
+                <div style="font-size:60px;"><i class="fa-solid fa-circle-plus"></i></div>
+
+                <h2>Add Book</h2>
+
+                <p>Add a new book to the library.</p>
+
+            </div>
+
+            <div class="card" onclick="window.location.href='view_books.html'">
+
+                <div style="font-size:60px;"><i class="fa-solid fa-book"></i></div>
+
+                <h2>View Books</h2>
+
+                <p>View, update and delete books.</p>
+
+            </div>
+
+            <div class="card" onclick="window.location.href='members.html'">
+
+                <div style="font-size:60px;"><i class="fa-solid fa-users"></i></div>
+
+                <h2>Members</h2>
+
+                <p>View all registered members.</p>
+
+            </div>
+
+            <div class="card" onclick="logout()">
+
+                <div style="font-size:60px;"><i class="fa-solid fa-right-from-bracket"></i></div>
+
+                <h2>Logout</h2>
+
+                <p>Exit the admin dashboard.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function logout() {
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+    <script src="js/admin_dashboard.js"></script>
+
+</body>
+
+</html>

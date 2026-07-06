@@ -1,0 +1,1117 @@
+/* ==========================================================
+   Library Management System - Single style.css
+   Use:
+   <body class="login-page">     -> index, admin_login, user_login
+   <body class="dashboard-page"> -> all other pages
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --border: #dbe3ef;
+    --shadow: 0 10px 25px rgba(0, 0, 0, .08);
+    --login-bg: linear-gradient(135deg, #eef4ff, #f7f9fc);
+    --hover: #f8fbff;
+}
+
+.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --text-muted: #9ca3af;
+    --border: #334155;
+    --shadow: 0 10px 25px rgba(0, 0, 0, .3);
+    --login-bg: linear-gradient(135deg, #0f172a, #1e293b);
+    --hover: #334155;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ================= LOGIN PAGE ================= */
+
+body.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--login-bg);
+}
+
+.login-page .container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    padding: 40px;
+}
+
+.login-page h1 {
+    color: var(--primary);
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.login-page p {
+    color: #6b7280;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.login-page button {
+    width: 320px;
+    margin: 12px auto;
+    display: block;
+}
+
+/* ================= DASHBOARD ================= */
+
+body.dashboard-page {
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    padding: 35px 50px;
+}
+
+header {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    color: #fff;
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    opacity: .85;
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    background: var(--card);
+    color: var(--text);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(37, 99, 235, .2);
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--primary);
+    color: white;
+    font-size: 15px;
+    transition: .25s;
+}
+
+button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: var(--success);
+}
+
+.btn-danger {
+    background: var(--danger);
+}
+
+.btn-warning {
+    background: var(--warning);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 35px;
+    text-align: center;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    margin-top: 15px;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+@media (min-width: 1400px) {
+    .books {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.book {
+    background: var(--card);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    transition: .3s;
+    border-left: 6px solid #2563EB;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+.book h2,
+.book h3 {
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.book p {
+    margin: 8px 0;
+    color: var(--text-muted);
+    line-height: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+}
+
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+tr:hover {
+    background: var(--hover);
+}
+
+.profile {
+    max-width: 600px;
+    margin: auto;
+    background: var(--card);
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#recommendationSection {
+    margin-top: 35px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    header {
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        transition: opacity 0.2s;
+    }
+
+    .menu-toggle:hover {
+        opacity: 0.8;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #2563EB;
+        padding: 20px 0;
+        gap: 15px;
+        align-items: center;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    header nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    nav a {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+
+    .books {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .login-page h1 {
+        font-size: 34px;
+    }
+
+    .login-page button {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .profile-card {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .books {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 15px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        padding: 12px 10px 12px 50%;
+        text-align: right;
+        font-size: 15px;
+    }
+
+    td::before {
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    td:nth-of-type(1)::before { content: "ID"; }
+    td:nth-of-type(2)::before { content: "Name"; }
+    td:nth-of-type(3)::before { content: "Role"; }
+
+    td:last-child {
+        border-bottom: none;
+    }
+}
+
+label {
+
+    font-weight: 600;
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text);
+
+}
+
+.profile {
+
+    max-width: 700px;
+
+}
+
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    margin-bottom: 15px;
+
+}
+
+select:focus {
+
+    outline: none;
+
+    border-color: #2563EB;
+
+    box-shadow: 0 0 8px rgba(37, 99, 235, .2);
+
+}
+
+
+
+.update-btn {
+
+    background: #2563EB;
+
+    margin-right: 10px;
+
+}
+
+.update-btn:hover {
+
+    background: #1D4ED8;
+
+}
+
+.delete-btn {
+
+    background: #EF4444;
+
+}
+
+.delete-btn:hover {
+
+    background: #DC2626;
+
+}
+
+
+
+.borrow-btn {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    background: #22C55E;
+
+}
+
+.borrow-btn:hover {
+
+    background: #16A34A;
+
+}
+
+.borrowed-btn {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    background: #9CA3AF;
+
+    cursor: not-allowed;
+
+}
+
+
+
+#search {
+
+    font-size: 18px;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+}
+
+#search:focus {
+
+    border-color: #2563EB;
+
+}
+
+#recommendationSection {
+
+    margin-top: 50px;
+
+}
+
+.icon {
+
+    font-size: 65px;
+
+    margin-bottom: 20px;
+
+}
+
+.card p {
+
+    color: #6B7280;
+
+    margin-top: 10px;
+
+}
+
+.card {
+
+    min-height: 240px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.card:hover {
+
+    background: #2563EB;
+
+    color: white;
+
+}
+
+.card:hover h2 {
+
+    color: white;
+
+}
+
+.card:hover p {
+
+    color: white;
+
+}
+
+/* ================= PROFILE PAGE ================= */
+
+.profile-card {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    background: var(--card);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+
+}
+
+.profile-avatar {
+
+    width: 120px;
+
+    height: 120px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #2563EB;
+
+    color: white;
+
+    font-size: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #6B7280;
+
+    margin-bottom: 35px;
+
+}
+
+.profile-info {
+
+    margin-top: 20px;
+
+}
+
+.profile-info label {
+
+    display: block;
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+.profile-card button {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+}
+
+/* ================= RETURN BUTTON ================= */
+
+.return-btn {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    background: #EF4444;
+
+}
+
+.return-btn:hover {
+
+    background: #DC2626;
+
+}
+
+/* ================= EMPTY CARD ================= */
+
+.empty-card {
+
+    background: var(--card);
+
+    padding: 60px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
+
+}
+
+.empty-card h2 {
+
+    color: #2563EB;
+
+    margin-bottom: 20px;
+
+}
+
+.empty-card p {
+
+    color: #6B7280;
+
+}
+
+/* ================= NAVBAR ================= */
+
+header {
+
+    width: 100%;
+
+    height: 75px;
+
+    background: #2563EB;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 40px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+
+}
+
+.logo {
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+}
+
+nav {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    transition: .3s;
+
+}
+
+nav a:hover {
+
+    color: #dbeafe;
+
+}
+
+footer {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #6B7280;
+
+    font-size: 15px;
+
+    margin-top: auto;
+
+}
+
+body.login-page {
+
+    min-height: 100vh;
+
+    background: var(--login-bg);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.login-page .container {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 40px;
+
+}
+
+/* ================= STATISTICS ================= */
+.container {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+}
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+
+    gap: 25px;
+
+    width: 100%;
+
+    margin: 30px 0;
+
+}
+
+.stat-card {
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+    min-width: 0;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: var(--bg);
+}
+
+.stat-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.stat-card h3 {
+
+    color: #6B7280;
+
+    margin-bottom: 15px;
+
+}
+
+.stat-card h1 {
+
+    color: #2563EB;
+
+    font-size: 45px;
+
+}
+
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 12px 0;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+}
+
+select:focus {
+
+    outline: none;
+
+    border-color: #2563EB;
+
+    box-shadow: 0 0 8px rgba(37, 99, 235, .2);
+
+}
+
+/* ================= LOADING ================= */
+
+.loading {
+
+    display: none;
+
+    text-align: center;
+
+    margin: 40px 0;
+
+}
+
+.spinner {
+
+    width: 60px;
+
+    height: 60px;
+
+    border: 6px solid #e5e7eb;
+
+    border-top: 6px solid #2563EB;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+    margin: auto;
+
+}
+
+.loading p {
+
+    margin-top: 15px;
+
+    color: #6B7280;
+
+    font-size: 18px;
+
+}
+
+@keyframes spin {
+
+    100% {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* ================= ERROR & EMPTY STATES ================= */
+.error-message {
+    text-align: center;
+    color: var(--danger);
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 600px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.05);
+}
+
+.empty-card i {
+    font-size: 50px;
+    color: #9CA3AF;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* ================= THEME TOGGLE & MENU BUTTONS ================= */
+.menu-toggle {
+    display: none;
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.5s ease;
+    outline: none;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1) rotate(15deg);
+}
+
+.theme-toggle-btn i {
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.theme-toggle-btn.floating {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card);
+    color: var(--text);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    z-index: 1000;
+    width: 45px;
+    height: 45px;
+}
+
+.theme-toggle-btn.floating:hover {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ================= BOOK ACTION LAYOUT ================= */
+.book > button,
+.book-actions {
+    margin-top: auto;
+}
+
+.book-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.book-actions button {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 480px) {
+    .book-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

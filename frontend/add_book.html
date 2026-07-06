@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+
+<body class="dashboard-page">
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-book"></i> Library Management System
+
+        </div>
+
+        <nav>
+
+            <a href="admin.html">Dashboard</a>
+
+            <a href="add_book.html">Add Book</a>
+
+            <a href="view_books.html">Books</a>
+
+            <a href="members.html">Members</a>
+
+            <a href="index.html">Logout</a>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h1><i class="fa-solid fa-circle-plus"></i> Add New Book</h1>
+
+        <p style="color:#6b7280;font-size:17px;margin-bottom:30px;">
+            Enter the details of the book you want to add.
+        </p>
+
+        <div class="profile">
+
+            <label><b>Book Title</b></label>
+
+            <input type="text" id="title" placeholder="Enter book title">
+
+            <br><br>
+
+            <label><b>Author</b></label>
+
+            <input type="text" id="author" placeholder="Enter author name">
+
+            <br><br>
+
+            <label><b>Genre</b></label>
+
+            <select id="genre">
+
+                <option value="">Select Genre</option>
+
+                <option>Fantasy</option>
+
+                <option>Science Fiction</option>
+
+                <option>Mystery</option>
+
+                <option>Thriller</option>
+
+                <option>Romance</option>
+
+                <option>Historical</option>
+
+                <option>Biography</option>
+
+                <option>Self Help</option>
+
+                <option>Programming</option>
+
+                <option>Education</option>
+
+            </select>
+
+            <br><br>
+
+            <button onclick="addBook()">
+
+                <i class="fa-solid fa-book"></i> Add Book
+
+            </button>
+
+            <br><br>
+
+            <a href="admin.html">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="js/add_book.js"></script>
+
+</body>
+<footer>
+
+    <p>
+
+        © 2026 Library Management System | Developed by Bhargav
+
+    </p>
+
+</footer>
+
+</html>

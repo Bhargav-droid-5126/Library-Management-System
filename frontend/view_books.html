@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>View Books</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+
+</head>
+
+<body class="dashboard-page">
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-book"></i> Library Management System
+
+        </div>
+
+        <nav>
+
+            <a href="admin.html">Dashboard</a>
+
+            <a href="add_book.html">Add Book</a>
+
+            <a href="view_books.html">Books</a>
+
+            <a href="members.html">Members</a>
+
+            <a href="index.html">Logout</a>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h1><i class="fa-solid fa-book"></i> Library Books</h1>
+
+        <p style="color:#6b7280;font-size:17px;margin-bottom:30px;">
+            Manage all books in your library.
+        </p>
+
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <p>Loading books...</p>
+
+        </div>
+
+        <div class="books" id="bookContainer">
+
+        </div>
+
+        <br><br>
+
+        <a href="admin.html">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+    <script src="js/view_books.js"></script>
+
+</body>
+
+<footer>
+
+    <p>
+
+        © 2026 Library Management System | Developed by Bhargav
+
+    </p>
+
+</footer>
+
+</html>

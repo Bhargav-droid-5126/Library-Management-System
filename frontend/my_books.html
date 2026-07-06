@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <title>My Books</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+
+</head>
+
+<body class="dashboard-page">
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-book"></i> Library Management System
+
+        </div>
+
+        <nav>
+
+            <a href="user.html">Dashboard</a>
+
+            <a href="home.html">Home</a>
+
+            <a href="my_books.html">My Books</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="index.html">Logout</a>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h1><i class="fa-solid fa-book-open"></i> My Books</h1>
+
+        <p style="color:#6B7280;font-size:18px;margin-bottom:30px;">
+
+            These are the books you've currently borrowed.
+
+        </p>
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <p>Loading books...</p>
+
+        </div>
+
+        <div class="books" id="books">
+
+        </div>
+
+        <br><br>
+
+        <a href="user.html">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </div>
+
+    <script src="js/my_books.js"></script>
+
+</body>
+<footer>
+
+    <p>
+
+        © 2026 Library Management System | Developed by Bhargav
+
+    </p>
+
+</footer>
+
+</html>

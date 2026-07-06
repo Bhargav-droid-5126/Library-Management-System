@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>My Profile</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+
+</head>
+
+<body class="dashboard-page">
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-book"></i> Library Management System
+
+        </div>
+
+        <nav>
+
+            <a href="user.html">Dashboard</a>
+
+            <a href="home.html">Home</a>
+
+            <a href="my_books.html">My Books</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="index.html">Logout</a>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+
+                <div class="profile-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+            </div>
+
+            <h1>My Profile</h1>
+
+            <p class="subtitle">
+
+                Manage your account information
+
+            </p>
+
+            <div id="loading" class="loading">
+
+                <div class="spinner"></div>
+
+                <p>Loading profile...</p>
+
+            </div>
+
+            <div id="profileContent">
+
+                <div class="profile-info">
+
+                    <label>Member ID</label>
+
+                    <input type="text" id="memberId" readonly>
+
+                    <label>Name</label>
+
+                    <input type="text" id="memberName">
+
+                    <label>Books Borrowed</label>
+
+                    <input type="text" id="bookCount" readonly>
+
+                </div>
+
+                <button class="btn-success" onclick="updateProfile()">
+
+                    <i class="fa-solid fa-pen"></i> Update Profile
+
+                </button>
+
+            </div>
+
+            <br><br>
+
+            <button class="btn-danger" onclick="logout()">
+
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+
+            </button>
+
+            <br><br>
+
+            <a href="user.html">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="js/profile.js"></script>
+
+</body>
+<footer>
+
+    <p>
+
+        © 2026 Library Management System | Developed by Bhargav
+
+    </p>
+
+</footer>
+
+</html>
