@@ -378,13 +378,13 @@ select:focus {
 
     margin-top: 15px;
 
-    background: var(--primary);
+    background: var(--primary) !important;
 
 }
 
 .borrow-btn:hover {
 
-    background: var(--primary-dark);
+    background: var(--primary-dark) !important;
 
 }
 
@@ -394,7 +394,7 @@ select:focus {
 
     margin-top: 15px;
 
-    background: var(--danger);
+    background: var(--danger) !important;
 
     cursor: not-allowed;
 
