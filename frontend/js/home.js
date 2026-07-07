@@ -27,11 +27,11 @@ async function loadBooks() {
 
         books.forEach(function (book) {
             let status = "Available";
-            let button = `<button onclick="borrowBook(${book.book_id})">Borrow</button>`;
+            let button = `<button class="borrow-btn" onclick="borrowBook(${book.book_id})"><i class="fa-solid fa-bookmark"></i> Borrow</button>`;
 
             if (book.borrowed_by != null) {
                 status = "Borrowed";
-                button = `<button disabled>Borrowed</button>`;
+                button = `<button class="borrowed-btn" disabled><i class="fa-solid fa-bookmark"></i> Borrowed</button>`;
             }
 
             booksDiv.innerHTML += `
