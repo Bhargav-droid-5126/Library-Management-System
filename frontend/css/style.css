@@ -292,150 +292,7 @@ a:hover {
     margin-top: 35px;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 20px 15px;
-    }
 
-    header {
-        padding: 0 20px;
-        position: relative;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .menu-toggle {
-        display: flex;
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        transition: opacity 0.2s;
-    }
-
-    .menu-toggle:hover {
-        opacity: 0.8;
-    }
-
-    header nav {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 75px;
-        left: 0;
-        width: 100%;
-        background: #2563EB;
-        padding: 20px 0;
-        gap: 15px;
-        align-items: center;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-        z-index: 999;
-        
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    header nav.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    nav a {
-        font-size: 18px;
-        width: 100%;
-        text-align: center;
-        padding: 8px 0;
-    }
-
-    .books {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .dashboard {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .login-page h1 {
-        font-size: 34px;
-    }
-
-    .login-page button {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .profile-card {
-        padding: 25px 20px;
-    }
-}
-
-@media (max-width: 600px) {
-    .books {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
-    
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr {
-        margin-bottom: 20px;
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 15px;
-        background: var(--card);
-        box-shadow: var(--shadow);
-    }
-
-    td {
-        border: none;
-        border-bottom: 1px solid var(--border);
-        position: relative;
-        padding: 12px 10px 12px 50%;
-        text-align: right;
-        font-size: 15px;
-    }
-
-    td::before {
-        position: absolute;
-        left: 15px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
-        color: var(--primary);
-    }
-
-    td:nth-of-type(1)::before { content: "ID"; }
-    td:nth-of-type(2)::before { content: "Name"; }
-    td:nth-of-type(3)::before { content: "Role"; }
-
-    td:last-child {
-        border-bottom: none;
-    }
-}
 
 label {
 
@@ -1109,9 +966,179 @@ select:focus {
     margin-right: 0 !important;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    header {
+        padding: 0 20px;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        transition: opacity 0.2s;
+    }
+
+    .menu-toggle:hover {
+        opacity: 0.8;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #2563EB;
+        padding: 20px 0;
+        gap: 15px;
+        align-items: center;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    header nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    nav a {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+
+    .books {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .login-page h1 {
+        font-size: 34px;
+    }
+
+    .login-page button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .login-page .container {
+        padding: 30px 20px;
+    }
+    
+    .profile-card {
+        padding: 25px 20px;
+    }
+
+    .profile {
+        padding: 25px 20px;
+    }
+
+    .empty-card {
+        padding: 30px 20px;
+    }
+
+    .card {
+        padding: 25px 20px;
+        min-height: 180px;
+    }
+
+    .stat-card {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .books {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 15px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        padding: 12px 10px 12px 50%;
+        text-align: right;
+        font-size: 15px;
+    }
+
+    td::before {
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    td:nth-of-type(1)::before { content: "ID"; }
+    td:nth-of-type(2)::before { content: "Name"; }
+    td:nth-of-type(3)::before { content: "Role"; }
+
+    td:last-child {
+        border-bottom: none;
+    }
+}
+
 @media (max-width: 480px) {
     .book-actions {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .login-page .container {
+        padding: 20px 15px;
     }
 }
