@@ -60,12 +60,9 @@ class DatabaseManager:
         if self._conn is None or getattr(self._conn, "closed", 0) != 0:
             return False
         try:
-            self._conn.poll()
             status = self._conn.get_transaction_status()
             if status == psycopg2.extensions.TRANSACTION_STATUS_UNKNOWN:
                 return False
-            if status == psycopg2.extensions.TRANSACTION_STATUS_ERROR:
-                self._conn.rollback()
             return True
         except Exception:
             return False
@@ -78,9 +75,9 @@ class DatabaseManager:
         return self._conn
 
     def get_cursor(self):
-        self.get_conn()
+        conn = self.get_conn()
         if self._cursor is None or getattr(self._cursor, "closed", False):
-            self._cursor = self._conn.cursor()
+            self._cursor = conn.cursor()
         return self._cursor
 
     def execute(self, query, params=None):
@@ -93,19 +90,15 @@ class DatabaseManager:
                 else:
                     cur.execute(query)
                 return cur
-            except (psycopg2.OperationalError, psycopg2.InterfaceError) as e:
+            except (psycopg2.OperationalError, psycopg2.InterfaceError):
                 # Connection dropped (e.g. Neon serverless sleep, SSL closed, AWS NAT timeout)
                 self.close()
                 if attempt == max_retries - 1:
                     raise
                 time.sleep(0.3)
-            except psycopg2.Error as e:
+            except psycopg2.Error:
                 # Rollback aborted transaction so subsequent queries aren't poisoned
-                try:
-                    if self._conn and getattr(self._conn, "closed", 0) == 0:
-                        self._conn.rollback()
-                except Exception:
-                    pass
+                self.rollback()
                 raise
 
     def commit(self):
@@ -120,11 +113,7 @@ class DatabaseManager:
                     raise
                 time.sleep(0.3)
             except psycopg2.Error:
-                try:
-                    if self._conn and getattr(self._conn, "closed", 0) == 0:
-                        self._conn.rollback()
-                except Exception:
-                    pass
+                self.rollback()
                 raise
 
     def rollback(self):
@@ -135,8 +124,10 @@ class DatabaseManager:
             pass
 
     def fetchone(self):
+        if self._cursor is None:
+            raise psycopg2.ProgrammingError("no results to fetch")
         try:
-            return self.get_cursor().fetchone()
+            return self._cursor.fetchone()
         except (psycopg2.OperationalError, psycopg2.InterfaceError):
             self.close()
             raise
@@ -145,8 +136,10 @@ class DatabaseManager:
             raise
 
     def fetchall(self):
+        if self._cursor is None:
+            raise psycopg2.ProgrammingError("no results to fetch")
         try:
-            return self.get_cursor().fetchall()
+            return self._cursor.fetchall()
         except (psycopg2.OperationalError, psycopg2.InterfaceError):
             self.close()
             raise
