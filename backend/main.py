@@ -61,6 +61,9 @@ class Book(BaseModel):
 class DeleteBook(BaseModel):
     book_id: int
 
+class DeleteMember(BaseModel):
+    mem_id: int
+
 class BorrowBook(BaseModel):
     book_id: int
     mem_id: int
@@ -87,15 +90,31 @@ def home():
 @app.post("/register")
 def register(member: Member):
     try:
+        # Find the lowest available positive integer ID (filling any gaps continuously)
+        cursor.execute("""
+            SELECT s.id
+            FROM generate_series(1, (SELECT COALESCE(MAX(mem_id), 0) + 1 FROM members)) s(id)
+            WHERE NOT EXISTS (
+                SELECT 1 FROM members m WHERE m.mem_id = s.id
+            )
+            ORDER BY s.id ASC
+            LIMIT 1
+        """)
+        row = cursor.fetchone()
+        next_id = int(row[0]) if row and row[0] is not None else 1
+
         cursor.execute(
             """
-            INSERT INTO members(mem_name, password, role)
-            VALUES(%s, %s, 'user')
+            INSERT INTO members(mem_id, mem_name, password, role)
+            VALUES(%s, %s, %s, 'user')
             RETURNING mem_id
             """,
-            (member.mem_name, member.password)
+            (next_id, member.mem_name, member.password)
         )
         member_id = cursor.fetchone()[0]
+
+        # Keep sequence aligned with the maximum mem_id
+        cursor.execute("SELECT setval('members_mem_id_seq', (SELECT GREATEST(MAX(mem_id), 1) FROM members))")
         conn.commit()
 
         return {
@@ -257,14 +276,96 @@ def update_book(book: UpdateBook):
         }
 
 
+def _resequence_members_if_needed():
+    """Ensure member IDs are strictly contiguous (1..N) without random gaps."""
+    try:
+        cursor.execute("SELECT mem_id FROM members ORDER BY mem_id ASC")
+        rows = cursor.fetchall()
+        if not rows:
+            return
+        current_ids = [r[0] for r in rows]
+        # Check if there are gaps (e.g. 1..8 then 12, 13)
+        has_gaps = any(current_ids[i] != i + 1 for i in range(len(current_ids)))
+        if has_gaps:
+            # Shift to temporary negative IDs to avoid unique constraint collision
+            for idx, old_id in enumerate(current_ids):
+                new_id = idx + 1
+                if old_id != new_id:
+                    temp_id = -(idx + 10000)
+                    cursor.execute("UPDATE books SET borrowed_by=%s WHERE borrowed_by=%s", (temp_id, old_id))
+                    cursor.execute("UPDATE members SET mem_id=%s WHERE mem_id=%s", (temp_id, old_id))
+
+            # Assign new continuous 1..N IDs
+            for idx, old_id in enumerate(current_ids):
+                new_id = idx + 1
+                if old_id != new_id:
+                    temp_id = -(idx + 10000)
+                    cursor.execute("UPDATE books SET borrowed_by=%s WHERE borrowed_by=%s", (new_id, temp_id))
+                    cursor.execute("UPDATE members SET mem_id=%s WHERE mem_id=%s", (new_id, temp_id))
+
+            cursor.execute("SELECT setval('members_mem_id_seq', (SELECT GREATEST(MAX(mem_id), 1) FROM members))")
+            conn.commit()
+    except Exception:
+        conn.rollback()
+
+
 @app.get("/members")
 def get_members():
+    # Keep IDs cleanly continuous and sorted
+    _resequence_members_if_needed()
     cursor.execute("""
         SELECT mem_id, mem_name, role
         FROM members
+        ORDER BY mem_id ASC
     """)
     members = cursor.fetchall()
     return members
+
+
+@app.delete("/delete-member")
+def delete_member(member: DeleteMember):
+    try:
+        cursor.execute("SELECT role FROM members WHERE mem_id=%s", (member.mem_id,))
+        row = cursor.fetchone()
+        if not row:
+            return {"success": False, "message": "Member not found"}
+        if row[0] == "admin":
+            return {"success": False, "message": "Cannot delete admin account"}
+
+        # Release borrowed books if any
+        cursor.execute("UPDATE books SET borrowed_by=NULL WHERE borrowed_by=%s", (member.mem_id,))
+        cursor.execute("DELETE FROM members WHERE mem_id=%s", (member.mem_id,))
+        conn.commit()
+
+        # Resequence IDs so remaining members continue in strict sequence
+        _resequence_members_if_needed()
+
+        return {
+            "success": True,
+            "message": "Member Deleted Successfully"
+        }
+    except Exception as e:
+        conn.rollback()
+        return {
+            "success": False,
+            "message": f"Failed to delete member: {str(e)}"
+        }
+
+
+@app.post("/resequence-members")
+def resequence_members():
+    try:
+        _resequence_members_if_needed()
+        return {
+            "success": True,
+            "message": "Members Resequenced Successfully"
+        }
+    except Exception as e:
+        conn.rollback()
+        return {
+            "success": False,
+            "message": f"Resequencing failed: {str(e)}"
+        }
 
 
 @app.put("/borrow-book")
